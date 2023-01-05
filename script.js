@@ -1,8 +1,6 @@
-async function loadModel() {
-    //const model = await tf.loadLayersModel('file://converted/model.json');
-    const model = await tf.loadLayersModel('./converted/model.json');
-    console.log(model)
-    return model
-}
+import * as tf from '@tensorflow/tfjs';
 
-model = loadModel()
+// For Keras use tf.loadLayersModel().
+const model = await tf.loadLayersModel('./converted/model.json');
+const dog = document.getElementById('dog');
+model.predict(tf.browser.fromPixels(dog));
